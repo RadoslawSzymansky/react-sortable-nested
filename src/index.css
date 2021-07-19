@@ -1,7 +1,9 @@
-.App {
+.app {
+  display: flex;
   font-family: sans-serif;
-  text-align: center;
+
 }
+
 .ghost {
-  background: lightblue!important;
+  background: #eee !important;
 }
