@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+const commonAfter = `
+  &:after {
+    position: absolute;
+    display: block;
+    width: 1px;
+    content: "";
+    background-color: black;
+  }
+`;
+
+const lineHeight = {
+  sm: 'calc(100% + 15px)',
+  md: 'calc(100% + 30px)',
+  minusMd: 'calc(100% - 30px)',
+  xl: 'calc(100% + 45px)',
+}
+
 export const StyledDepotWrapper = styled.div`
   margin-left: 15px;
   padding: 15px 15px 15px 35px;
@@ -26,38 +43,34 @@ export const StyledBlock = styled.div`
 `;
 
 export const StyledBlockWrapper = styled(StyledBlock)`
-  padding: 20px 0 20px 20px;
+  padding: 14px 0 14px 20px;
   margin-left: 30px;
   cursor: move;
 
+  ${commonAfter};
+
   &:after {
-    position: absolute;
-    display: block;
-    width: 1px;
-    height: calc(100% + 15px);
-    content: "";
-    background-color: black;
+    height: ${lineHeight.sm};
     bottom: 28px;
     right: calc(100% + 19px);
   }
 
   &:first-child {
     &:after {
-      height: calc(100% - 40px);
+      height: ${lineHeight.minusMd};
     }
   }
   &:not(first-child) {
     &:after {
-      height: calc(100% + 35px);
-      bottom: 29px;
-      background-color: black;
+      height: ${lineHeight.md};
+      bottom: 22px;
     }
   }
 `;
 
 export const StyledParentWrapper = styled(StyledBlock)`
     width: calc(100% - 20px);
-    padding: 20px;
+    padding: 14px 20px;
     left: -20px;
 
     &::before {
@@ -65,14 +78,10 @@ export const StyledParentWrapper = styled(StyledBlock)`
     }
 
     &:last-child {
+      ${commonAfter};
       &:after {
-        position: absolute;
-        display: block;
-        width: 1px;
-        height: calc(100% + 30px);
-        content: "";
-        background-color: black;
-        bottom: -37.5px;
+        height: ${lineHeight.md};
+        bottom: -35px;
         right: calc(100% - 12px);
       }
     };
@@ -84,54 +93,38 @@ export const StyledGroup = styled.div`
 
     &:last-child > div:first-child {
       &:after {
-        position: absolute;
-        display: block;
-        width: 1px;
-        height: calc(100% + 30px);
-        content: "";
-        background-color: black;
+        ${commonAfter};
+        height: ${lineHeight.md};
         bottom: 29px;
         right: calc(100% + 19px);
       }
     };
 
     &:not(:first-child) > div:first-child {
+      ${commonAfter};
       &:after {
-        position: absolute;
-        display: block;
-        width: 1px;
-        height: calc(100% + 35px);
-        content: "";
-        background-color: black;
-        bottom: 29px;
+        height: ${lineHeight.md};
+        bottom: 22px;
         right: calc(100% + 19px);
       }
     };
 
     &:not(:last-child) > div:not(:first-child) {
+      ${commonAfter};
       &:after {
-        position: absolute;
-        display: block;
-        width: 1px;
-        height: calc(100% + 30px);
-        content: "";
-        background-color: black;
-        bottom: -37.5px;
+
+        height: ${lineHeight.sm};
+        bottom: -35px;
         right: calc(100% - 12px);
       }
     };
 
     &:first-child > div:first-child {
+      ${commonAfter};
       &:after {
-        position: absolute;
-        display: block;
-        width: 1px;
-        height: calc(100% - 40px);
-        content: "";
-        background-color: black;
-        bottom: 29px;
+        height: ${lineHeight.minusMd};
+        bottom: 22px;
         right: calc(100% + 19px);
       }
     };
-
 `;
